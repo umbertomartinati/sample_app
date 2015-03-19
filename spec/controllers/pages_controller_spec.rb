@@ -16,7 +16,7 @@ RSpec.describe PagesController, type: :controller do
   
   it "should have the right title" do
     get 'home'
-    response.should have_selector("title",:content => "Ruby on Rails Tutorial Sample App | Home")
+    response.should have_selector("title:contains('Ruby on Rails Tutorial Sample App | Home')")
   end
   end
   
