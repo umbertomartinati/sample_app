@@ -1,8 +1,9 @@
 Rails.application.routes.draw do
-  get 'pages/contact'
-  get 'pages/about'
-  get 'pages/home'
+  
 
+
+
+  get 'users/new'
 
   resources :widgets
 
@@ -11,7 +12,13 @@ Rails.application.routes.draw do
 
   # You can have the root of your site routed with "root"
 
-  root 'welcome#index'
+  root 'pages#home'
+  
+  match '/help',    to: 'pages#help',    via: 'get'
+  match '/about',   to: 'pages#about',   via: 'get'
+  match '/contact', to: 'pages#contact', via: 'get'
+  
+  match 'signup',   to: 'pages#new',     via: 'get'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
