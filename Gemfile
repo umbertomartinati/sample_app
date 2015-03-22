@@ -29,6 +29,10 @@ gem 'spring',        group: :development
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
+gem 'bcrypt-ruby', '3.0.1'
+gem 'gravatar_image_tag'
+
+
 gem 'puma'
 
 
@@ -40,6 +44,7 @@ end
 group :test do
   gem 'rspec'
   gem 'webrat'
+  gem 'factory_girl_rails'
 end
 
 # Use Capistrano for deployment

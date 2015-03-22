@@ -14980,3 +14980,466 @@ ActiveRecord::RecordNotFound (Couldn't find User with 'id'=1):
   [1m[36m (0.3ms)[0m  [1mBEGIN[0m
   [1m[35mUser Exists (0.7ms)[0m  SELECT  1 AS one FROM "users"  WHERE (LOWER("users"."email") = LOWER('ugo@gmail.com') AND "users"."id" != 1) LIMIT 1
   [1m[36m (0.3ms)[0m  [1mROLLBACK[0m
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[36mActiveRecord::SchemaMigration Load (15.7ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.2ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to AddPassword (20150322145751)
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (33.9ms)[0m  [1mALTER TABLE "users" ADD COLUMN "password_digest" character varying(255)[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20150322145751"]]
+  [1m[36m (9.0ms)[0m  [1mCOMMIT[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.2ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[35m (0.5ms)[0m  ROLLBACK
+  [1m[36m (0.3ms)[0m  [1mBEGIN[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to AddPasswordToUsers (20150322150249)
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.4ms)[0m  [1mALTER TABLE "users" ADD COLUMN "encrypted_password" character varying(255)[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20150322150249"]]
+  [1m[36m (9.5ms)[0m  [1mCOMMIT[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.4ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[35m (0.5ms)[0m  ROLLBACK
+  [1m[36m (215.0ms)[0m  [1mDROP DATABASE IF EXISTS "dbtest_test"[0m
+  [1m[35m (533.4ms)[0m  CREATE DATABASE "dbtest_test" ENCODING = 'unicode'
+  [1m[36m (224.6ms)[0m  [1mDROP DATABASE IF EXISTS "dbtest_test"[0m
+  [1m[35m (558.3ms)[0m  CREATE DATABASE "dbtest_test" ENCODING = 'unicode'
+  [1m[36mSQL (0.2ms)[0m  [1mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (72.2ms)[0m  CREATE TABLE "users" ("id" serial primary key, "name" character varying(255), "email" character varying(255), "created_at" timestamp, "updated_at" timestamp, "password_digest" character varying(255), "encrypted_password" character varying(255)) 
+  [1m[36m (41.4ms)[0m  [1mCREATE UNIQUE INDEX  "index_users_on_email" ON "users" USING btree ("email")[0m
+  [1m[35m (108.6ms)[0m  CREATE TABLE "widgets" ("id" serial primary key, "name" character varying(255), "description" text, "stock" integer, "created_at" timestamp, "updated_at" timestamp) 
+  [1m[36m (9.0ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" character varying(255) NOT NULL) [0m
+  [1m[35m (32.5ms)[0m  CREATE UNIQUE INDEX  "unique_schema_migrations" ON "schema_migrations"  ("version")
+  [1m[36m (0.2ms)[0m  [1mSELECT version FROM "schema_migrations"[0m
+  [1m[35m (33.0ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20150322150249')
+  [1m[36m (8.1ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20150320143707')[0m
+  [1m[35m (8.1ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20150321155806')
+  [1m[36m (8.1ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20150322145751')[0m
+  [1m[35m (8.1ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20140707111715')
+  [1m[36m (8.1ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20150321155633')[0m
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.4ms)[0m  ROLLBACK
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to AddSaltToUser (20150322155141)
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.4ms)[0m  [1mALTER TABLE "users" ADD COLUMN "salt" character varying(255)[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20150322155141"]]
+  [1m[36m (9.7ms)[0m  [1mCOMMIT[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.2ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mUser Exists (47.9ms)[0m  SELECT  1 AS one FROM "users"  WHERE LOWER("users"."email") = LOWER('user@esempio.com') LIMIT 1
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.3ms)[0m  BEGIN
+  [1m[36mUser Exists (0.7ms)[0m  [1mSELECT  1 AS one FROM "users"  WHERE LOWER("users"."email") = LOWER('user@esempio.com') LIMIT 1[0m
+  [1m[35m (0.3ms)[0m  ROLLBACK
+  [1m[36m (0.3ms)[0m  [1mBEGIN[0m
+  [1m[35mUser Exists (0.7ms)[0m  SELECT  1 AS one FROM "users"  WHERE LOWER("users"."email") = LOWER('user@esempio.com') LIMIT 1
+  [1m[36m (0.3ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.3ms)[0m  BEGIN
+  [1m[36mUser Exists (0.7ms)[0m  [1mSELECT  1 AS one FROM "users"  WHERE LOWER("users"."email") = LOWER('user@esempio.com') LIMIT 1[0m
+  [1m[35m (0.3ms)[0m  ROLLBACK
+  [1m[36m (0.3ms)[0m  [1mBEGIN[0m
+  [1m[35mUser Exists (0.7ms)[0m  SELECT  1 AS one FROM "users"  WHERE LOWER("users"."email") = LOWER('user@esempio.com') LIMIT 1
+  [1m[36m (0.3ms)[0m  [1mROLLBACK[0m
+  [1m[35mUser Load (0.8ms)[0m  SELECT "users".* FROM "users"
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mUser Exists (0.4ms)[0m  [1mSELECT  1 AS one FROM "users"  WHERE "users"."email" IS NULL LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK TO SAVEPOINT active_record_1
+  [1m[36m (0.3ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.5ms)[0m  SELECT  1 AS one FROM "users"  WHERE LOWER("users"."email") = LOWER('user@example.com') LIMIT 1
+  [1m[36mSQL (12.2ms)[0m  [1mINSERT INTO "users" ("created_at", "email", "name", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["created_at", "2015-03-22 16:05:53.698606"], ["email", "user@example.com"], ["name", "Example User"], ["updated_at", "2015-03-22 16:05:53.698606"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.2ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.5ms)[0m  SELECT  1 AS one FROM "users"  WHERE LOWER("users"."email") = LOWER('user@example.com') LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.5ms)[0m  ROLLBACK
+  [1m[36m (0.0ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mUser Exists (0.5ms)[0m  [1mSELECT  1 AS one FROM "users"  WHERE LOWER("users"."email") = LOWER('user@example.com') LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "users" ("created_at", "email", "encrypted_password", "name", "salt", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["created_at", "2015-03-22 16:07:06.887332"], ["email", "user@example.com"], ["encrypted_password", "531edb5d4c0cc288a36b9f79ca0481ef05e117e0c91043e0298be58bbaea2b1a"], ["name", "Example User"], ["salt", "808cd81adc1cf54d0aa91ee478b83292c1c42fd185f128e8d3cd95b767d22070"], ["updated_at", "2015-03-22 16:07:06.887332"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.3ms)[0m  SAVEPOINT active_record_1
+  [1m[36mUser Exists (0.7ms)[0m  [1mSELECT  1 AS one FROM "users"  WHERE LOWER("users"."email") = LOWER('ugo@gmail.com') LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK TO SAVEPOINT active_record_1
+  [1m[36mUser Load (1.3ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."email" = 'ugo@gmail.com' LIMIT 1[0m
+  [1m[35m (0.5ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mUser Exists (0.5ms)[0m  [1mSELECT  1 AS one FROM "users"  WHERE LOWER("users"."email") = LOWER('user@example.com') LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "users" ("created_at", "email", "encrypted_password", "name", "salt", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["created_at", "2015-03-22 16:13:31.233455"], ["email", "user@example.com"], ["encrypted_password", "225e7f9dc83f9e70a96ae50b8700dd230d0d47262c9dab9c6befb9a5626c8a6b"], ["name", "Example User"], ["salt", "0eece06f358234343ce7738fcb2bba9d2c2c8a39a5bff737b54302790a9ad554"], ["updated_at", "2015-03-22 16:13:31.233455"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.3ms)[0m  SAVEPOINT active_record_1
+  [1m[36mUser Exists (0.7ms)[0m  [1mSELECT  1 AS one FROM "users"  WHERE LOWER("users"."email") = LOWER('mhartl@example.com') LIMIT 1[0m
+  [1m[35mSQL (0.6ms)[0m  INSERT INTO "users" ("created_at", "email", "encrypted_password", "name", "salt", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["created_at", "2015-03-22 16:13:47.637083"], ["email", "mhartl@example.com"], ["encrypted_password", "8ec8df8f5e645bbdfeb59e4d94487724775bba9799fc64c59885bf88bcf71b4f"], ["name", "Michael Hartl"], ["salt", "ffb7bacd494b5b5eb50d48e004365bf448d67b15d63795197b8631ec09b4dcb5"], ["updated_at", "2015-03-22 16:13:47.637083"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mUser Load (0.4ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."email" = 'mhartl@example.com' LIMIT 1
+  [1m[36m (5007.9ms)[0m  [1mDROP DATABASE IF EXISTS "dbtest"[0m
+PG::ObjectInUse: ERROR:  database "dbtest" is being accessed by other users
+DETAIL:  There is 1 other session using the database.
+: DROP DATABASE IF EXISTS "dbtest"
+  [1m[35m (213.7ms)[0m  DROP DATABASE IF EXISTS "dbtest_test"
+  [1m[36m (0.2ms)[0m  [1mCREATE DATABASE "dbtest" ENCODING = 'unicode'[0m
+PG::DuplicateDatabase: ERROR:  database "dbtest" already exists
+: CREATE DATABASE "dbtest" ENCODING = 'unicode'
+  [1m[35m (532.5ms)[0m  CREATE DATABASE "dbtest_test" ENCODING = 'unicode'
+  [1m[36m (5008.0ms)[0m  [1mDROP DATABASE IF EXISTS "dbtest"[0m
+PG::ObjectInUse: ERROR:  database "dbtest" is being accessed by other users
+DETAIL:  There is 1 other session using the database.
+: DROP DATABASE IF EXISTS "dbtest"
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT "users".* FROM "users"[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mUser Exists (0.4ms)[0m  [1mSELECT  1 AS one FROM "users"  WHERE LOWER("users"."email") = LOWER('user@example.com') LIMIT 1[0m
+  [1m[36m (0.5ms)[0m  [1mROLLBACK[0m
+  [1m[35mSQL (14839.8ms)[0m  INSERT INTO "users" ("created_at", "email", "encrypted_password", "name", "salt", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["created_at", "2015-03-22 16:36:29.884186"], ["email", "user@example.com"], ["encrypted_password", "1ac56e94135ae8816cf1b42fcc99db62fcd2517cfa04975d5743d029f7dd069c"], ["name", "Example User"], ["salt", "47301a13420c9c0feb66772780c91d1d4bda2c06f68928e40b242ffbd66e5448"], ["updated_at", "2015-03-22 16:36:29.884186"]]
+  [1m[36m (12.9ms)[0m  [1mCOMMIT[0m
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT "users".* FROM "users"[0m
+
+
+Started GET "/users/8" for 127.0.0.1 at 2015-03-22 17:40:47 +0100
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"8"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = $1 LIMIT 1  [["id", 8]]
+  Rendered users/show.html.erb within layouts/application (30.8ms)
+Completed 500 Internal Server Error in 80ms
+
+ActionView::Template::Error (undefined method `gravatar_image_tag' for #<#<Class:0x00000003137b50>:0x00000003141ab0>):
+    1: <h1> 
+    2: <%= gravatar_image_tag @user.email %>
+    3: <%= @user.name %>
+    4: </h1>
+  app/views/users/show.html.erb:2:in `_app_views_users_show_html_erb___3958663218636663583_24779320'
+
+
+  Rendered /var/lib/gems/1.9.1/gems/actionpack-4.1.8/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (0.6ms)
+  Rendered /var/lib/gems/1.9.1/gems/actionpack-4.1.8/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.4ms)
+  Rendered /var/lib/gems/1.9.1/gems/actionpack-4.1.8/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (6.7ms)
+
+
+Started GET "/users/8" for 127.0.0.1 at 2015-03-22 17:41:05 +0100
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"8"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 8]]
+  Rendered users/show.html.erb within layouts/application (4.5ms)
+Completed 500 Internal Server Error in 7ms
+
+ActionView::Template::Error (undefined method `gravatar_image_tag' for #<#<Class:0x00000003137b50>:0x0000000321d808>):
+    1: <h1> 
+    2: <%= gravatar_image_tag @user.email %>
+    3: <%= @user.name %>
+    4: </h1>
+  app/views/users/show.html.erb:2:in `_app_views_users_show_html_erb___3958663218636663583_26292660'
+
+
+  Rendered /var/lib/gems/1.9.1/gems/actionpack-4.1.8/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (0.6ms)
+  Rendered /var/lib/gems/1.9.1/gems/actionpack-4.1.8/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.5ms)
+  Rendered /var/lib/gems/1.9.1/gems/actionpack-4.1.8/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (4.8ms)
+
+
+Started GET "/users/8" for 127.0.0.1 at 2015-03-22 17:41:05 +0100
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"8"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = $1 LIMIT 1  [["id", 8]]
+  Rendered users/show.html.erb within layouts/application (4.4ms)
+Completed 500 Internal Server Error in 6ms
+
+ActionView::Template::Error (undefined method `gravatar_image_tag' for #<#<Class:0x00000003137b50>:0x00000002ead4c0>):
+    1: <h1> 
+    2: <%= gravatar_image_tag @user.email %>
+    3: <%= @user.name %>
+    4: </h1>
+  app/views/users/show.html.erb:2:in `_app_views_users_show_html_erb___3958663218636663583_26292660'
+
+
+  Rendered /var/lib/gems/1.9.1/gems/actionpack-4.1.8/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (0.6ms)
+  Rendered /var/lib/gems/1.9.1/gems/actionpack-4.1.8/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.5ms)
+  Rendered /var/lib/gems/1.9.1/gems/actionpack-4.1.8/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (5.6ms)
+
+
+Started GET "/users/8" for 127.0.0.1 at 2015-03-22 17:41:06 +0100
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"8"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 8]]
+  Rendered users/show.html.erb within layouts/application (3.9ms)
+Completed 500 Internal Server Error in 6ms
+
+ActionView::Template::Error (undefined method `gravatar_image_tag' for #<#<Class:0x00000003137b50>:0x00000003234238>):
+    1: <h1> 
+    2: <%= gravatar_image_tag @user.email %>
+    3: <%= @user.name %>
+    4: </h1>
+  app/views/users/show.html.erb:2:in `_app_views_users_show_html_erb___3958663218636663583_26292660'
+
+
+  Rendered /var/lib/gems/1.9.1/gems/actionpack-4.1.8/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.1ms)
+  Rendered /var/lib/gems/1.9.1/gems/actionpack-4.1.8/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.1ms)
+  Rendered /var/lib/gems/1.9.1/gems/actionpack-4.1.8/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (9.4ms)
+
+
+Started GET "/users/8" for 127.0.0.1 at 2015-03-22 17:41:07 +0100
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"8"}
+  [1m[35mUser Load (0.4ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = $1 LIMIT 1  [["id", 8]]
+  Rendered users/show.html.erb within layouts/application (5.4ms)
+Completed 500 Internal Server Error in 9ms
+
+ActionView::Template::Error (undefined method `gravatar_image_tag' for #<#<Class:0x00000003137b50>:0x000000034d0e38>):
+    1: <h1> 
+    2: <%= gravatar_image_tag @user.email %>
+    3: <%= @user.name %>
+    4: </h1>
+  app/views/users/show.html.erb:2:in `_app_views_users_show_html_erb___3958663218636663583_26292660'
+
+
+  Rendered /var/lib/gems/1.9.1/gems/actionpack-4.1.8/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (0.6ms)
+  Rendered /var/lib/gems/1.9.1/gems/actionpack-4.1.8/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.5ms)
+  Rendered /var/lib/gems/1.9.1/gems/actionpack-4.1.8/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (5.0ms)
+
+
+Started GET "/users/13" for 127.0.0.1 at 2015-03-22 17:41:17 +0100
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"13"}
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 13]]
+  Rendered users/show.html.erb within layouts/application (3.8ms)
+Completed 500 Internal Server Error in 6ms
+
+ActionView::Template::Error (undefined method `gravatar_image_tag' for #<#<Class:0x00000003137b50>:0x00000002ecc460>):
+    1: <h1> 
+    2: <%= gravatar_image_tag @user.email %>
+    3: <%= @user.name %>
+    4: </h1>
+  app/views/users/show.html.erb:2:in `_app_views_users_show_html_erb___3958663218636663583_26292660'
+
+
+  Rendered /var/lib/gems/1.9.1/gems/actionpack-4.1.8/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (0.6ms)
+  Rendered /var/lib/gems/1.9.1/gems/actionpack-4.1.8/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.4ms)
+  Rendered /var/lib/gems/1.9.1/gems/actionpack-4.1.8/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (4.8ms)
+
+
+Started GET "/users/13" for 127.0.0.1 at 2015-03-22 17:41:34 +0100
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"13"}
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = $1 LIMIT 1  [["id", 13]]
+  Rendered users/show.html.erb within layouts/application (0.3ms)
+  Rendered layouts/_stylesheets.html.erb (34.6ms)
+  Rendered layouts/_header.html.erb (3.4ms)
+  Rendered layouts/_footer.html.erb (0.3ms)
+Completed 200 OK in 47ms (Views: 45.0ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/users/13" for 127.0.0.1 at 2015-03-22 17:41:38 +0100
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"13"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 13]]
+  Rendered users/show.html.erb within layouts/application (4.7ms)
+Completed 500 Internal Server Error in 7ms
+
+ActionView::Template::Error (undefined method `gravatar_image_tag' for #<#<Class:0x00000003137b50>:0x00000003555408>):
+    1: <h1> 
+    2: <%= gravatar_image_tag @user.email %>
+    3: <%= @user.name %>
+    4: </h1>
+  app/views/users/show.html.erb:2:in `_app_views_users_show_html_erb___3958663218636663583_27980860'
+
+
+  Rendered /var/lib/gems/1.9.1/gems/actionpack-4.1.8/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (0.6ms)
+  Rendered /var/lib/gems/1.9.1/gems/actionpack-4.1.8/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.5ms)
+  Rendered /var/lib/gems/1.9.1/gems/actionpack-4.1.8/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (4.8ms)
+
+
+Started GET "/users/13" for 127.0.0.1 at 2015-03-22 17:42:45 +0100
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"13"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = $1 LIMIT 1  [["id", 13]]
+  Rendered users/show.html.erb within layouts/application (4.9ms)
+Completed 500 Internal Server Error in 7ms
+
+ActionView::Template::Error (undefined method `gravatar_for' for #<#<Class:0x00000003137b50>:0x007f68ac3ebf18>):
+    1: <h1> 
+    2: <%= gravatar_for @user %>
+    3: <%= @user.name %>
+    4: </h1>
+  app/views/users/show.html.erb:2:in `_app_views_users_show_html_erb___3958663218636663583_70043771581640'
+
+
+  Rendered /var/lib/gems/1.9.1/gems/actionpack-4.1.8/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (0.6ms)
+  Rendered /var/lib/gems/1.9.1/gems/actionpack-4.1.8/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.6ms)
+  Rendered /var/lib/gems/1.9.1/gems/actionpack-4.1.8/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (5.3ms)
+
+
+Started GET "/users/13" for 127.0.0.1 at 2015-03-22 17:42:46 +0100
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"13"}
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 13]]
+  Rendered users/show.html.erb within layouts/application (4.6ms)
+Completed 500 Internal Server Error in 7ms
+
+ActionView::Template::Error (undefined method `gravatar_for' for #<#<Class:0x00000003137b50>:0x007f68ac62fae0>):
+    1: <h1> 
+    2: <%= gravatar_for @user %>
+    3: <%= @user.name %>
+    4: </h1>
+  app/views/users/show.html.erb:2:in `_app_views_users_show_html_erb___3958663218636663583_70043771581640'
+
+
+  Rendered /var/lib/gems/1.9.1/gems/actionpack-4.1.8/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (21.4ms)
+  Rendered /var/lib/gems/1.9.1/gems/actionpack-4.1.8/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.6ms)
+  Rendered /var/lib/gems/1.9.1/gems/actionpack-4.1.8/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (27.4ms)
+
+
+Started GET "/signup" for 127.0.0.1 at 2015-03-22 17:43:31 +0100
+Processing by UsersController#new as HTML
+  Rendered users/new.html.erb within layouts/application (0.5ms)
+  Rendered layouts/_stylesheets.html.erb (15.6ms)
+  Rendered layouts/_header.html.erb (3.3ms)
+  Rendered layouts/_footer.html.erb (0.1ms)
+Completed 200 OK in 24ms (Views: 23.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/help" for 127.0.0.1 at 2015-03-22 17:43:34 +0100
+Processing by PagesController#help as HTML
+  Rendered pages/help.html.erb within layouts/application (0.2ms)
+  Rendered layouts/_stylesheets.html.erb (15.0ms)
+  Rendered layouts/_header.html.erb (3.3ms)
+  Rendered layouts/_footer.html.erb (0.1ms)
+Completed 200 OK in 21ms (Views: 20.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/13" for 127.0.0.1 at 2015-03-22 17:43:38 +0100
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"13"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = $1 LIMIT 1  [["id", 13]]
+  Rendered users/show.html.erb within layouts/application (5.0ms)
+Completed 500 Internal Server Error in 8ms
+
+ActionView::Template::Error (undefined method `gravatar_for' for #<#<Class:0x00000003137b50>:0x007f68a4547e00>):
+    1: <h1> 
+    2: <%= gravatar_for @user %>
+    3: <%= @user.name %>
+    4: </h1>
+  app/views/users/show.html.erb:2:in `_app_views_users_show_html_erb___3958663218636663583_70043771581640'
+
+
+  Rendered /var/lib/gems/1.9.1/gems/actionpack-4.1.8/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (0.7ms)
+  Rendered /var/lib/gems/1.9.1/gems/actionpack-4.1.8/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.6ms)
+  Rendered /var/lib/gems/1.9.1/gems/actionpack-4.1.8/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (5.6ms)
+  [1m[35mUser Load (0.8ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = $1 LIMIT 1  [["id", 13]]
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mUser Exists (0.4ms)[0m  SELECT  1 AS one FROM "users"  WHERE (LOWER("users"."email") = LOWER('example@railstutorial.org') AND "users"."id" != 13) LIMIT 1
+  [1m[36mSQL (0.3ms)[0m  [1mUPDATE "users" SET "email" = $1, "updated_at" = $2 WHERE "users"."id" = 13[0m  [["email", "example@railstutorial.org"], ["updated_at", "2015-03-22 16:44:21.118489"]]
+  [1m[35m (13.6ms)[0m  COMMIT
+
+
+Started GET "/help" for 127.0.0.1 at 2015-03-22 17:45:40 +0100
+
+SyntaxError (/home/ugomarti/rails_project/sample_app/app/helpers/users_helper.rb:9: syntax error, unexpected $end, expecting keyword_end):
+  app/helpers/users_helper.rb:9: syntax error, unexpected $end, expecting keyword_end
+  app/controllers/application_controller.rb:1:in `<top (required)>'
+  app/controllers/pages_controller.rb:1:in `<top (required)>'
+
+
+  Rendered /var/lib/gems/1.9.1/gems/actionpack-4.1.8/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.4ms)
+  Rendered /var/lib/gems/1.9.1/gems/actionpack-4.1.8/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (0.5ms)
+  Rendered /var/lib/gems/1.9.1/gems/actionpack-4.1.8/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.7ms)
+  Rendered /var/lib/gems/1.9.1/gems/actionpack-4.1.8/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (13.0ms)
+
+
+Started GET "/help" for 127.0.0.1 at 2015-03-22 17:45:41 +0100
+
+SyntaxError (/home/ugomarti/rails_project/sample_app/app/helpers/users_helper.rb:9: syntax error, unexpected $end, expecting keyword_end):
+  app/helpers/users_helper.rb:9: syntax error, unexpected $end, expecting keyword_end
+  app/controllers/application_controller.rb:1:in `<top (required)>'
+  app/controllers/pages_controller.rb:1:in `<top (required)>'
+
+
+  Rendered /var/lib/gems/1.9.1/gems/actionpack-4.1.8/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.3ms)
+  Rendered /var/lib/gems/1.9.1/gems/actionpack-4.1.8/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (0.7ms)
+  Rendered /var/lib/gems/1.9.1/gems/actionpack-4.1.8/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.7ms)
+  Rendered /var/lib/gems/1.9.1/gems/actionpack-4.1.8/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (7.1ms)
+
+
+Started GET "/help" for 127.0.0.1 at 2015-03-22 17:45:52 +0100
+Processing by PagesController#help as HTML
+  Rendered pages/help.html.erb within layouts/application (0.0ms)
+  Rendered layouts/_stylesheets.html.erb (14.5ms)
+  Rendered layouts/_header.html.erb (3.3ms)
+  Rendered layouts/_footer.html.erb (0.1ms)
+Completed 200 OK in 21ms (Views: 20.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/13" for 127.0.0.1 at 2015-03-22 17:45:57 +0100
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"13"}
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 13]]
+  Rendered users/show.html.erb within layouts/application (0.1ms)
+  Rendered layouts/_stylesheets.html.erb (36.5ms)
+  Rendered layouts/_header.html.erb (3.2ms)
+  Rendered layouts/_footer.html.erb (0.1ms)
+Completed 200 OK in 50ms (Views: 42.2ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/users/8" for 127.0.0.1 at 2015-03-22 17:46:02 +0100
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"8"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = $1 LIMIT 1  [["id", 8]]
+  Rendered users/show.html.erb within layouts/application (0.1ms)
+  Rendered layouts/_stylesheets.html.erb (14.6ms)
+  Rendered layouts/_header.html.erb (3.5ms)
+  Rendered layouts/_footer.html.erb (0.1ms)
+Completed 200 OK in 21ms (Views: 20.3ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/users/8" for 127.0.0.1 at 2015-03-22 17:47:50 +0100
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"8"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 8]]
+  Rendered users/show.html.erb within layouts/application (1.1ms)
+  Rendered layouts/_stylesheets.html.erb (18.2ms)
+  Rendered layouts/_header.html.erb (3.4ms)
+  Rendered layouts/_footer.html.erb (0.1ms)
+Completed 200 OK in 28ms (Views: 26.6ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/users/13" for 127.0.0.1 at 2015-03-22 17:47:53 +0100
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"13"}
+  [1m[35mUser Load (0.4ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = $1 LIMIT 1  [["id", 13]]
+  Rendered users/show.html.erb within layouts/application (0.1ms)
+  Rendered layouts/_stylesheets.html.erb (14.3ms)
+  Rendered layouts/_header.html.erb (25.9ms)
+  Rendered layouts/_footer.html.erb (0.1ms)
+Completed 200 OK in 48ms (Views: 44.8ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/users/13" for 127.0.0.1 at 2015-03-22 17:50:54 +0100
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"13"}
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 13]]
+  Rendered users/show.html.erb within layouts/application (1.0ms)
+  Rendered layouts/_stylesheets.html.erb (16.3ms)
+  Rendered layouts/_header.html.erb (3.3ms)
+  Rendered layouts/_footer.html.erb (0.1ms)
+Completed 200 OK in 24ms (Views: 23.0ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/users/13" for 127.0.0.1 at 2015-03-22 17:51:51 +0100
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"13"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = $1 LIMIT 1  [["id", 13]]
+  Rendered users/show.html.erb within layouts/application (0.6ms)
+  Rendered layouts/_stylesheets.html.erb (14.1ms)
+  Rendered layouts/_header.html.erb (3.0ms)
+  Rendered layouts/_footer.html.erb (0.1ms)
+Completed 200 OK in 21ms (Views: 19.9ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/users/13" for 127.0.0.1 at 2015-03-22 17:53:47 +0100
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"13"}
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 13]]
+  Rendered users/show.html.erb within layouts/application (0.3ms)
+  Rendered layouts/_stylesheets.html.erb (18.2ms)
+  Rendered layouts/_header.html.erb (3.2ms)
+  Rendered layouts/_footer.html.erb (0.1ms)
+Completed 200 OK in 26ms (Views: 24.3ms | ActiveRecord: 0.1ms)
